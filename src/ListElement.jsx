@@ -14,37 +14,40 @@ const ListElement = (props) => {
         else if (curr === 'GBP') return `${price} GBP`
         else return ''
     }
+    const showTitle = () => {
+        return String(props.title).length > 50 ? `${props.title.slice(0, 50)}...` : props.title
+    }
+    const chooseRemainColor = () => {
+       return `${props.quantity === '' ? '' : 'item-quantity'}
+                         ${remainsStyle(props.quantity)}`
+    }
 
     return (
         <>
+            {props.state === 'active' ?
             <div className="item-list">
                 <div className="item">
+                    <div className="item__inline__wrapper">
                     <div className="item-image">
                         <a href={props.url}>
                             <img src={props.mainImage.url_570xN} alt=''/>
                         </a>
                     </div>
                     <div className="item-details">
-                        <p className="item-title">{String(props.title).length > 50 ? `${props.title.slice(0, 50)}...` : props.title}</p>
+                        <p className="item-title">{showTitle()}</p>
                         <p className="item-price">{itemCurrency(props.currency_code, props.price)}</p>
-                        <p className={`${props.quantity === '' ? '' : 'item-quantity'}
-                         ${remainsStyle(props.quantity)}`}>
+                        <p className={chooseRemainColor()}>
                             {props.quantity}{props.quantity === '' ? '' : ' left'}
                         </p>
+                     </div>
                     </div>
                 </div>
-            </div>
+            </div> :
+            ''}
         </>
     );
 };
 
-ListElement.defaultProps = {
-    mainImage: '',
-    title: 'Товар недоступен.',
-    currency_code: '',
-    price: '',
-    quantity: ''
-};
 ListElement.propTypes = {
     listing_id: PropTypes.number,
     url: PropTypes.string,

@@ -8,7 +8,7 @@ html,body {
   font-family:"Work Sans", sans-serif;
   line-height:1.4;
   height: 100%;
-  width: 100%;
+
 }
 
 *,::before,::after {
@@ -101,9 +101,10 @@ html,body {
   opacity: 1;
   -webkit-transition: opacity 300ms ease;
   transition: opacity 300ms ease;
+  max-width: 50%;
 }
 
-.item {
+.item__inline__wrapper  {
   background-color:#fff;
   border-radius:2px;
   box-shadow:2px 2px 4px 0 #d1d1d1;

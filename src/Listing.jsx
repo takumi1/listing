@@ -7,6 +7,7 @@ const Listing = () => {
         <>
             {products.map((el, index) =>
                 <ListElement key={index} listing_id={el.listing_id}
+                             state={el.state}
                              url={el.url}
                              mainImage={el.MainImage}
                              title={el.title}
